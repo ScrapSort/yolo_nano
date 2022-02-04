@@ -2,6 +2,8 @@
 
 Still working on customizing to our ```trash_dataset``` 
 
+```Updated the network, now network size is 12 mb from 22 mb with similar performance```
+
 A minimal PyTorch implementation of YOLO_Nano
 - [Yolo_Nano](https://arxiv.org/abs/1910.01271)
 
