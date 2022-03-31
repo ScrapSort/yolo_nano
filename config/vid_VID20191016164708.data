@@ -1,5 +1,0 @@
-classes= 80
-valid=data/vid/vid64708.txt
-names=data/coco.names
-backup=backup/
-eval=coco

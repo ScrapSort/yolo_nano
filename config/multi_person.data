@@ -1,5 +1,0 @@
-classes= 80
-valid=data/MOT/multi_person.txt
-names=data/coco.names
-backup=backup/
-eval=coco
