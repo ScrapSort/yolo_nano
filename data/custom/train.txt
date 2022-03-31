@@ -1,1 +1,6 @@
-data/custom/images/train.jpg
+/data/satish/yolo_nano/scrapsort/custom_yolo_nano/data/custom/images/train_images/1592126.jpg
+/data/satish/yolo_nano/scrapsort/custom_yolo_nano/data/custom/images/train_images/2375673.jpg
+/data/satish/yolo_nano/scrapsort/custom_yolo_nano/data/custom/images/train_images/2409027.jpg
+/data/satish/yolo_nano/scrapsort/custom_yolo_nano/data/custom/images/train_images/elephant_human.jpg
+/data/satish/yolo_nano/scrapsort/custom_yolo_nano/data/custom/images/train_images/human_cat.jpg
+/data/satish/yolo_nano/scrapsort/custom_yolo_nano/data/custom/images/train_images/human_laptop_cat.jpg

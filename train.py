@@ -35,7 +35,7 @@ if __name__ == "__main__":
 	parser.add_argument("--model_def", type=str, default="config/yolov3.cfg", help="path to model definition file")
 	parser.add_argument("--data_config", type=str, default="config/coco.data", help="path to data config file")
 	parser.add_argument("--pretrained_weights", type=str, help="if specified starts from checkpoint model")
-	parser.add_argument("--n_cpu", type=int, default=8, help="number of cpu threads to use during batch generation")
+	parser.add_argument("--n_cpu", type=int, default=0, help="number of cpu threads to use during batch generation")
 	parser.add_argument("--img_size", type=int, default=416, help="size of each image dimension")
 	parser.add_argument("--checkpoint_interval", type=int, default=1, help="interval between saving model weights")
 	parser.add_argument("--evaluation_interval", type=int, default=1, help="interval evaluations on validation set")
@@ -49,7 +49,7 @@ if __name__ == "__main__":
 	parser.add_argument("--warm_up_lr", type=float, default=0.0, help="base_lr")
 	parser.add_argument("--none_mix_epoch", type=float, default= 100, help="base_lr")
 	parser.add_argument("--augment", type=bool, default= False, help="Use augment? paper said use augmentor may be get trouble result")
-	parser.add_argument("--mix_up", type=bool, default= True, help="Use mix_up? paper said use mixup may be get btter result")
+	parser.add_argument("--mix_up", type=bool, default= False, help="Use mix_up? paper said use mixup may be get btter result")
 	opt = parser.parse_args()
 	print(opt)
 	if opt.visual:
@@ -64,6 +64,7 @@ if __name__ == "__main__":
 	os.makedirs("checkpoints", exist_ok=True)
 
 	# Get data configuration
+	#import pdb; pdb.set_trace()
 	data_config = parse_data_config(opt.data_config)
 	train_path = data_config["train"]
 	valid_path = data_config["valid"]
@@ -88,6 +89,7 @@ if __name__ == "__main__":
 	opt.max_epoch+=2000
 	opt.warm_up_epoch *= len(dataloader)
 
+	#import pdb; pdb.set_trace()
 	optimizer = torch.optim.Adam(model.parameters(),lr = opt.lr)
 
 	metrics = [
@@ -108,6 +110,7 @@ if __name__ == "__main__":
 	]
 
 	for epoch in range(opt.epochs):
+		#import pdb; pdb.set_trace()
 		if epoch > opt.none_mix_epoch:
 			dataloader.dataset.use_mix = False
 		model.train()
@@ -190,7 +193,7 @@ if __name__ == "__main__":
 				nms_thres=0.5,
 				img_size=opt.img_size,
 				batch_size=1,
-				data_type="coco_test"
+				data_type="custom_test"
 			)
 			precision = precision[0]
 			recall = recall[0]
@@ -213,4 +216,4 @@ if __name__ == "__main__":
 			print(f"---- mAP {AP.mean()}")
 
 		if epoch % opt.checkpoint_interval == 0:
-			torch.save(model.state_dict(), f"checkpoints/yolov3_ckpt_%d.pth" % epoch)
+			torch.save(model.state_dict(), f"checkpoints/yolov-nano_custom_ckpt_%d.pth" % epoch)

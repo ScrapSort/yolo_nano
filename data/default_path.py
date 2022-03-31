@@ -24,6 +24,14 @@ class DatasetCatalog(object):
 		"MOT17-07": {
 			"img_dir": "../frame/MOT17-07-DPM/img1",
 			"annotations": "None"
+		},
+		"custom_train": {
+			"img_dir"		: "/data/satish/yolo_nano/scrapsort/custom_yolo_nano/data/custom/images/train_images",
+			"annotations"	: "/data/satish/yolo_nano/scrapsort/custom_yolo_nano/data/custom/annotations/annotations_train.json"
+		},
+		"custom_test": {
+			"img_dir"		: "/data/satish/yolo_nano/scrapsort/custom_yolo_nano/data/custom/images/val_images",
+			"annotations"	: "/data/satish/yolo_nano/scrapsort/custom_yolo_nano/data/custom/annotations/annotations_val.json"
 		}
 	}
 
@@ -46,6 +54,12 @@ class DatasetCatalog(object):
 			args = dict(
 				root = attrs["img_dir"],
 				json_file = attrs['annotations']
+			)
+		elif "custom" in name:
+			attrs = DatasetCatalog.DATASETS[name]
+			args = dict(
+				root = attrs["img_dir"],
+				json_file = attrs["annotations"]
 			)
 		else:
 			raise RuntimeError("Dataset not available: {}".format(name))
