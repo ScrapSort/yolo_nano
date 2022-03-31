@@ -7,7 +7,14 @@ A minimal PyTorch implementation of YOLO_Nano
 
 #### Download COCO
     $ cd data/custom
-    $ 
+#### Annotations
+    $ cd annotations/
+    place annotations here, for train, val, test here in COCO format
+#### Images
+    $ cd images
+    place train/val/test images here in the respective folder named
+    cd train_images
+
 ## Module Pipeline
 
 ## training
