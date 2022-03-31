@@ -1,13 +1,13 @@
 # PyTorch-YOLO_Nano
 
-Still working on customizing to our ```trash_dataset``` 
+codebase is ready for custom dataset  
 
 A minimal PyTorch implementation of YOLO_Nano
 - [Yolo_Nano](https://arxiv.org/abs/1910.01271)
 
 #### Download COCO
-    $ cd data/
-    $ bash get_coco_dataset.sh
+    $ cd data/custom
+    $ 
 ## Module Pipeline
 
 ## training
